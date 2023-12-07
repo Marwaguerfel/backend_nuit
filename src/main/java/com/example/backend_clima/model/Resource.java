@@ -1,11 +1,11 @@
 package com.example.backend_clima.model;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +23,9 @@ public class Resource {
 
     @ManyToOne
     private Quiz quiz;
+
+    @OneToOne
+    private Answer answer;
 
     // Constructors, getters, and setters
 
@@ -58,9 +61,16 @@ public class Resource {
         this.quiz = quiz;
     }
 
+    public Answer getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
+    }
+
     @Override
     public String toString() {
-        return "Resource [id=" + id + ", name=" + name + ", link=" + link + ", quiz=" + quiz + "]";
+        return "Resource [id=" + id + ", name=" + name + ", link=" + link + ", quiz=" + quiz + ", answer=" + answer + "]";
     }
 }
-

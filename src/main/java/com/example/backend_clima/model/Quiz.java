@@ -1,5 +1,4 @@
 package com.example.backend_clima.model;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -59,4 +58,3 @@ public class Quiz {
         return "Quiz [id=" + id + ", title=" + title + ", questions=" + questions + "]";
     }
 }
-

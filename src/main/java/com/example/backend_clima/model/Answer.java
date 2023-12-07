@@ -5,8 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,8 +23,10 @@ public class Answer {
     private boolean isCorrect;
 
     @ManyToOne
-    @JoinColumn(name = "QUESTION_ID", nullable = false)
     private Question question;
+
+    @OneToOne(mappedBy = "answer")
+    private Resource resource;
 
     // Constructors, getters, and setters
 
@@ -60,9 +62,19 @@ public class Answer {
         this.question = question;
     }
 
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
+    }
+
     @Override
     public String toString() {
-        return "Answer [id=" + id + ", text=" + text + ", isCorrect=" + isCorrect + ", question=" + question + "]";
+        return "Answer [id=" + id + ", text=" + text + ", isCorrect=" + isCorrect + ", question=" + question
+                + ", resource=" + resource + "]";
     }
 }
+
 
